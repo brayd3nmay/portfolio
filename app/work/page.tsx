@@ -106,7 +106,12 @@ export default function WorkPage() {
 
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((p, idx) => (
-            <ProjectCard key={p.id} project={p} withSlider={idx < 2} />
+            <ProjectCard
+              key={p.id}
+              project={p}
+              // first two: new tabs toggle, rest: side-by-side grid
+              display={idx < 2 ? 'tabs' : 'grid'}
+            />
           ))}
         </div>
       </Container>

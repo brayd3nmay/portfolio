@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { BeforeAfterSlider } from './BeforeAfterSlider';
+import { BeforeAfterTabs } from './BeforeAfterTabs';
 
 type Project = {
   id: string;
@@ -14,7 +15,18 @@ type Project = {
   after: string;
 };
 
-export function ProjectCard({ project, withSlider = false }: { project: Project; withSlider?: boolean }) {
+type DisplayVariant = 'slider' | 'grid' | 'tabs';
+
+export function ProjectCard({
+  project,
+  withSlider = false,
+  display,
+}: {
+  project: Project;
+  withSlider?: boolean; // backward-compat
+  display?: DisplayVariant;
+}) {
+  const variant: DisplayVariant = display || (withSlider ? 'slider' : 'grid');
   return (
     <article className="card p-6 flex flex-col gap-4">
       <header>
@@ -23,7 +35,7 @@ export function ProjectCard({ project, withSlider = false }: { project: Project;
       </header>
 
       <div className="rounded-lg overflow-hidden bg-neutral-100">
-        {withSlider ? (
+        {variant === 'slider' ? (
           <BeforeAfterSlider
             beforeSrc={project.before}
             afterSrc={project.after}
@@ -31,10 +43,23 @@ export function ProjectCard({ project, withSlider = false }: { project: Project;
             width={1200}
             height={800}
           />
+        ) : variant === 'tabs' ? (
+          <BeforeAfterTabs
+            beforeSrc={project.before}
+            afterSrc={project.after}
+            alt={`Before and after for ${project.name}`}
+            width={1200}
+            height={800}
+            defaultTab="after"
+          />
         ) : (
-          <div className="grid grid-cols-2 gap-2 p-2">
-            <Image src={project.before} alt={`Before - ${project.name}`} width={600} height={400} className="rounded" />
-            <Image src={project.after} alt={`After - ${project.name}`} width={600} height={400} className="rounded" />
+          <div className="grid grid-cols-2 gap-2 p-2 h-96">
+            <div className="overflow-y-auto rounded border">
+              <Image src={project.before} alt={`Before - ${project.name}`} width={600} height={400} className="w-full h-auto" />
+            </div>
+            <div className="overflow-y-auto rounded border">
+              <Image src={project.after} alt={`After - ${project.name}`} width={600} height={400} className="w-full h-auto" />
+            </div>
           </div>
         )}
       </div>
