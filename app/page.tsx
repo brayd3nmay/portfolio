@@ -4,6 +4,7 @@ import { SectionHeading } from '@/components/SectionHeading';
 import { Badge } from '@/components/Badge';
 import Link from 'next/link';
 import Image from 'next/image';
+import headshot from '../public/images/brayden-may.png';
 import { FaGaugeHigh, FaLock, FaMobileScreen } from 'react-icons/fa6';
 
 export const dynamic = 'force-static';
@@ -38,19 +39,41 @@ export default function HomePage() {
       </section>
 
       {/* Intro with headshot */}
-      <section className="pt-10 md:pt-12 pb-14 md:pb-16">
+      <section className="pt-16 md:pt-20 pb-8 md:pb-12">
         <Container>
-          <div className="max-w-3xl flex flex-col items-start gap-3 md:gap-4">
-            <Image
-              src="/images/brayden-may.jpg"
-              alt="Brayden May headshot"
-              width={192}
-              height={192}
-              className="h-32 w-32 md:h-36 md:w-36 rounded-full object-cover ring-1 ring-neutral-900/5"
-              priority
-            />
-            <p className="text-2xl md:text-3xl font-semibold text-neutral-800">Hi, I’m Brayden May.</p>
-            <p className="text-neutral-700 md:text-lg">I design and build clean, fast websites for small businesses in Ohio.</p>
+          <div className="relative">
+            {/* Background decoration */}
+            <div className="absolute inset-0 bg-gradient-to-br from-neutral-50 to-neutral-100/50 rounded-3xl" />
+            <div className="absolute inset-0 grid-overlay rounded-3xl opacity-30" />
+            
+            <div className="relative card p-8 md:p-12">
+              <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+                {/* Headshot */}
+                <div className="flex-shrink-0">
+                  <div className="relative">
+                    <div className="absolute -inset-1 bg-gradient-to-r from-neutral-200 to-neutral-300 rounded-full blur opacity-75" />
+                    <Image
+                      src={headshot}
+                      alt="Brayden May headshot"
+                      placeholder="blur"
+                      sizes="(min-width: 1024px) 12rem, (min-width: 768px) 11rem, 10rem"
+                      className="relative h-40 w-40 md:h-44 md:w-44 lg:h-48 lg:w-48 rounded-full object-cover ring-2 ring-white shadow-xl"
+                      priority
+                    />
+                  </div>
+                </div>
+                
+                {/* Content */}
+                <div className="flex-1 text-center lg:text-left flex flex-col justify-center">
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-neutral-900 mb-4">
+                    Hi, I'm Brayden May.
+                  </h2>
+                  <p className="text-lg md:text-xl lg:text-2xl text-neutral-600 leading-relaxed max-w-2xl">
+                    I design and build clean, fast websites for small businesses in Ohio while studying at The Ohio State University.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </Container>
       </section>
