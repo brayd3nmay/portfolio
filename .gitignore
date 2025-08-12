@@ -1,0 +1,17 @@
+# dependencies
+node_modules/
+
+# next.js
+.next/
+out/
+.swc/
+.turbo/
+
+# builds/tests
+dist/
+coverage/
+
+# env/os
+.env
+.env.*
+.DS_Store
