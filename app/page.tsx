@@ -3,6 +3,7 @@ import { CTA } from '@/components/CTA';
 import { SectionHeading } from '@/components/SectionHeading';
 import { Badge } from '@/components/Badge';
 import Link from 'next/link';
+import Image from 'next/image';
 import { FaGaugeHigh, FaLock, FaMobileScreen } from 'react-icons/fa6';
 
 export const dynamic = 'force-static';
@@ -32,6 +33,24 @@ export default function HomePage() {
               <Badge Icon={FaMobileScreen} label="Mobile first" />
               <Badge Icon={FaLock} label="Secure headers" />
             </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Intro with headshot */}
+      <section className="pt-10 md:pt-12 pb-14 md:pb-16">
+        <Container>
+          <div className="max-w-3xl flex flex-col items-start gap-3 md:gap-4">
+            <Image
+              src="/images/brayden-may.jpg"
+              alt="Brayden May headshot"
+              width={192}
+              height={192}
+              className="h-32 w-32 md:h-36 md:w-36 rounded-full object-cover ring-1 ring-neutral-900/5"
+              priority
+            />
+            <p className="text-2xl md:text-3xl font-semibold text-neutral-800">Hi, I’m Brayden May.</p>
+            <p className="text-neutral-700 md:text-lg">I design and build clean, fast websites for small businesses in Ohio.</p>
           </div>
         </Container>
       </section>
