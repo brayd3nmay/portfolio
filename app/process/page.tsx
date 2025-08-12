@@ -2,6 +2,7 @@ import { Container } from '@/components/Container';
 import { SectionHeading } from '@/components/SectionHeading';
 import { CTA } from '@/components/CTA';
 import type { Metadata } from 'next';
+import { FaMagnifyingGlass, FaPenRuler, FaCode, FaRocket } from 'react-icons/fa6';
 
 export const dynamic = 'force-static';
 
@@ -13,11 +14,24 @@ export const metadata: Metadata = {
 const steps = [
   {
     title: 'Review',
-    text: 'Quick audit of your current site and goals. We agree on scope and pages.'
+    text: 'Quick audit of your current site and goals. We agree on scope and pages.',
+    Icon: FaMagnifyingGlass,
   },
-  { title: 'Design', text: 'Tight, mobile-first layout focused on calls and appointments.' },
-  { title: 'Build', text: 'Next.js + Tailwind. Optimized images, secure headers, fast loads.' },
-  { title: 'Launch', text: 'Deploy on Vercel. Redirects and tracking in place. Under 4 weeks.' },
+  {
+    title: 'Design',
+    text: 'Tight, mobile-first layout focused on calls and appointments.',
+    Icon: FaPenRuler,
+  },
+  {
+    title: 'Build',
+    text: 'Next.js + Tailwind. Optimized images, secure headers, fast loads.',
+    Icon: FaCode,
+  },
+  {
+    title: 'Launch',
+    text: 'Deploy on Vercel. Redirects and tracking in place. Under 4 weeks.',
+    Icon: FaRocket,
+  },
 ];
 
 const faqs = [
@@ -36,10 +50,17 @@ export default function ProcessPage() {
 
           <div className="mt-10 grid grid-cols-1 md:grid-cols-4 gap-6">
             {steps.map((s) => (
-              <div key={s.title} className="card p-6">
+              <div key={s.title} className="card p-6 transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-md">
                 <h3 className="font-semibold">{s.title}</h3>
                 <p className="mt-2 text-sm text-neutral-600">{s.text}</p>
-                <div className="mt-4 h-20 bg-neutral-100 rounded-lg" aria-hidden />
+                <div className="mt-4 relative h-24 rounded-xl overflow-hidden" aria-hidden>
+                  <div className="absolute inset-0 bg-accent-gradient opacity-40" />
+                  <div className="absolute inset-0 grid-overlay opacity-60" />
+                  <div className="relative z-10 grid place-items-center h-full text-neutral-700">
+                    {/* @ts-expect-error Icon is provided per-step */}
+                    <s.Icon className="h-8 w-8" />
+                  </div>
+                </div>
               </div>
             ))}
           </div>
