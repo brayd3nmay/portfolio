@@ -13,7 +13,7 @@ export function Header() {
     <header className="sticky top-0 z-40 header-surface border-b hairline">
       <div className="container mx-auto flex items-center justify-between px-4 py-3">
         <Link href="/" className="font-bold tracking-tight text-lg no-underline">
-          Brayden
+          Brayden May
         </Link>
         <nav aria-label="Primary">
           <ul className="hidden md:flex items-center gap-6">

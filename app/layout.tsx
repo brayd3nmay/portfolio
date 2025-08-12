@@ -8,18 +8,18 @@ export const dynamic = 'force-static';
 export const metadata: Metadata = {
   metadataBase: new URL('https://braydenmay.com'),
   title: {
-    default: 'Brayden — Website Redesigns for Ohio Small Businesses',
-    template: '%s · Brayden',
+    default: 'Brayden May — Website Redesigns for Ohio Small Businesses',
+    template: '%s · Brayden May',
   },
   description:
     'Flat fee website redesigns for Ohio small businesses. Modern, fast, mobile friendly. View work, process, pricing, and get a proposal.',
   openGraph: {
-    title: 'Brayden — Website Redesigns for Ohio Small Businesses',
+    title: 'Brayden May — Website Redesigns for Ohio Small Businesses',
     description:
       'Flat fee website redesigns for Ohio small businesses. Modern, fast, mobile friendly.',
     url: 'https://braydenmay.com',
-    siteName: 'Brayden Portfolio',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Brayden portfolio' }],
+    siteName: 'Brayden May Portfolio',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Brayden May portfolio' }],
     locale: 'en_US',
     type: 'website',
   },

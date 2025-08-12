@@ -22,7 +22,7 @@ export function Footer() {
             </li>
           </ul>
         </nav>
-        <p className="text-neutral-500">Site by Brayden</p>
+        <p className="text-neutral-500">Site by Brayden May</p>
       </div>
     </footer>
   );

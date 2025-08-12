@@ -6,14 +6,14 @@ export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'Brayden — reliable, outcomes-focused redesigns for Ohio small businesses.',
+  description: 'Brayden May — reliable, outcomes-focused redesigns for Ohio small businesses.',
 };
 
 export default function AboutPage() {
   return (
     <section className="py-16 md:py-24">
       <Container>
-        <SectionHeading eyebrow="About" title="Hi, I’m Brayden" subtitle="Reliable, outcomes-focused, and easy to work with." />
+        <SectionHeading eyebrow="About" title="Hi, I’m Brayden May" subtitle="Reliable, outcomes-focused, and easy to work with." />
         <div className="mt-8 prose prose-neutral max-w-none">
           <p>
             I help Ohio small businesses ship modern sites that drive calls and appointments. My approach is

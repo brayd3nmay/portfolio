@@ -1,4 +1,4 @@
-Brayden — Small-business website redesign portfolio
+Brayden May — Small-business website redesign portfolio
 ===================================================
 
 Tech: Next.js 15 (App Router), React 19, TypeScript 5, Tailwind CSS 4, ESLint 9, Prettier 3, next-sitemap.

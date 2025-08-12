@@ -39,7 +39,7 @@ export default function HomePage() {
       {/* Bento cards */}
       <section className="py-16 md:py-24">
         <Container>
-          <SectionHeading eyebrow="Why Brayden" title="Results-focused redesigns" subtitle="Cleaner design, faster sites, and clearer calls to action." />
+          <SectionHeading eyebrow="Why Brayden May" title="Results-focused redesigns" subtitle="Cleaner design, faster sites, and clearer calls to action." />
 
           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
