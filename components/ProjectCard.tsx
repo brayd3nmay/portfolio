@@ -56,7 +56,7 @@ export function ProjectCard({ project, withSlider = false }: { project: Project;
 
       <div className="mt-auto">
         <Link href={project.liveUrl} className="btn-secondary no-underline" target="_blank" rel="noopener noreferrer">
-          View live (placeholder)
+          View live
         </Link>
       </div>
     </article>

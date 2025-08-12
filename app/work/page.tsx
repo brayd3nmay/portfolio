@@ -33,9 +33,9 @@ const projects: Project[] = [
       'Image optimization and clear contact on every page',
       'Mobile-first layout and quicker TTFB',
     ],
-    liveUrl: 'https://example.com',
-    before: '/images/projects/schaeffer-before.svg',
-    after: '/images/projects/schaeffer-after.svg',
+    liveUrl: 'https://schaeffertank.com/',
+    before: '/images/projects/schaeffer-before.png',
+    after: '/images/projects/schaeffer-after.png',
   },
   {
     id: 'hvac',
