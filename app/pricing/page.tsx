@@ -7,37 +7,44 @@ export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
   title: 'Pricing',
-  description: 'Transparent, flat fee with practical add-ons.',
+  description: 'Simple, upfront pricing for busy small business owners.',
 };
 
 export default function PricingPage() {
   return (
     <section className="py-16 md:py-24">
       <Container>
-        <SectionHeading eyebrow="Pricing" title="Transparent, flat fee" subtitle="No surprises. Everything you need to launch." />
+        <SectionHeading
+          eyebrow="Pricing"
+          title="Simple, upfront pricing"
+          subtitle="Most projects are $5,000 or less. No long contracts, no surprises."
+        />
 
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-          <div className="card p-6 md:col-span-2 flex flex-col">
-            <h3 className="text-xl font-bold">Core Redesign — $4,800</h3>
-            <ul className="mt-4 space-y-2 text-sm text-neutral-700 list-disc pl-5">
-              <li>Up to 8 pages (Home, Services, About, Contact, etc.)</li>
-              <li>Next.js + Tailwind build with image optimization</li>
-              <li>Content guidance and simple copy edits</li>
-              <li>Secure headers and basic analytics hookup</li>
-              <li>Launch on Vercel with redirects</li>
-            </ul>
+        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div className="card p-6">
+            <h3 className="text-lg font-semibold">Built for busy owners</h3>
+            <p className="mt-2 text-neutral-700 text-sm">
+              I make it easy to get a new website live without the hassle. You’ll get a clear
+              proposal with the total price and scope up front, explained in plain English.
+            </p>
+            <p className="mt-3 text-neutral-700 text-sm">
+              Most small‑business projects come in at or under <strong>$5,000</strong>. If scope
+              changes, we talk first—no surprise invoices.
+            </p>
             <div className="mt-6">
               <Link href="/contact" className="btn-primary no-underline">Request a proposal</Link>
             </div>
           </div>
+
           <div className="card p-6">
-            <h4 className="font-semibold">Add-ons</h4>
-            <ul className="mt-3 text-sm text-neutral-700 space-y-2 list-disc pl-5">
-              <li>Extra pages beyond 8</li>
-              <li>Logo refresh and brand kit</li>
-              <li>Photo sourcing or light edits</li>
-              <li>Blog setup (static)</li>
-            </ul>
+            <h3 className="text-lg font-semibold">Want the line items?</h3>
+            <p className="mt-2 text-neutral-700 text-sm">
+              I keep a detailed pricing breakdown for teams who need it. It covers the fixed setup
+              and unit rates used to estimate projects.
+            </p>
+            <div className="mt-4">
+              <Link href="/pricing/details" className="btn-secondary no-underline">View detailed pricing</Link>
+            </div>
           </div>
         </div>
       </Container>

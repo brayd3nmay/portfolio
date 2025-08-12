@@ -3,6 +3,7 @@ import { SectionHeading } from '@/components/SectionHeading';
 import { CTA } from '@/components/CTA';
 import type { Metadata } from 'next';
 import { FaMagnifyingGlass, FaPenRuler, FaCode, FaRocket } from 'react-icons/fa6';
+import type { IconType } from 'react-icons';
 
 export const dynamic = 'force-static';
 
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   description: 'Review, Design, Build, Launch in under 4 weeks.',
 };
 
-const steps = [
+const steps: { title: string; text: string; Icon: IconType }[] = [
   {
     title: 'Review',
     text: 'Quick audit of your current site and goals. We agree on scope and pages.',
@@ -57,8 +58,7 @@ export default function ProcessPage() {
                   <div className="absolute inset-0 bg-accent-gradient opacity-40" />
                   <div className="absolute inset-0 grid-overlay opacity-60" />
                   <div className="relative z-10 grid place-items-center h-full text-neutral-700">
-                    {/* @ts-expect-error Icon is provided per-step */}
-                    <s.Icon className="h-8 w-8" />
+                    <s.Icon aria-hidden className="h-8 w-8" />
                   </div>
                 </div>
               </div>

@@ -1,3 +1,4 @@
-// Redirect to ESM flat config when using CommonJS loader
-module.exports = require('./eslint.config.mjs');
+// Redirect to ESM flat config. Kept for compatibility, but written as ESM so it
+// does not trip project linting under `type: module`.
+export { default } from './eslint.config.mjs';
 
