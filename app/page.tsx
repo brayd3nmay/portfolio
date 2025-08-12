@@ -5,11 +5,46 @@ import { Badge } from '@/components/Badge';
 import Link from 'next/link';
 import Image from 'next/image';
 import headshot from '../public/images/brayden-may.png';
-import { FaGaugeHigh, FaLock, FaMobileScreen } from 'react-icons/fa6';
+import { FaGaugeHigh, FaLock, FaMobileScreen, FaMagnifyingGlass, FaTag, FaRocket } from 'react-icons/fa6';
+import type { IconType } from 'react-icons';
 
 export const dynamic = 'force-static';
 
 export default function HomePage() {
+  const features: { title: string; text: string; Icon: IconType; iconClassName?: string }[] = [
+    {
+      title: 'Conversion first',
+      text: 'Layouts and copy aimed at calls, forms, and bookings.',
+      Icon: FaGaugeHigh,
+    },
+    {
+      title: 'Mobile performance',
+      text: 'Lightweight pages that load fast on 4G and look great on phones.',
+      Icon: FaMobileScreen,
+    },
+    {
+      title: 'Secure by default',
+      text: 'Strict security headers and minimal scripts for a safer site.',
+      Icon: FaLock,
+    },
+    {
+      title: 'SEO basics baked in',
+      text: 'Semantic HTML, metadata, sitemaps, and clean URLs.',
+      Icon: FaMagnifyingGlass,
+      iconClassName: 'scale-x-[-1]',
+    },
+    {
+      title: 'Clear pricing',
+      text: 'Flat, transparent rates with no surprise fees.',
+      Icon: FaTag,
+      iconClassName: 'scale-x-[-1]',
+    },
+    {
+      title: 'Fast turnaround',
+      text: 'Launch in 2–4 weeks with a focused scope and clear milestones.',
+      Icon: FaRocket,
+    },
+  ];
   return (
     <>
       {/* Hero */}
@@ -84,19 +119,25 @@ export default function HomePage() {
           <SectionHeading eyebrow="Why Brayden May" title="Results-focused redesigns" subtitle="Cleaner design, faster sites, and clearer calls to action." />
 
           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              'Conversion first',
-              'Mobile performance',
-              'Secure by default',
-              'SEO basics baked in',
-              'Clear pricing',
-              'Fast turnaround',
-            ].map((title, i) => (
-              <div key={title} className="card p-6 transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-md">
-                <h3 className="font-semibold">{title}</h3>
-                <p className="mt-2 text-sm text-neutral-600">Simple, outcome-focused builds for small businesses.</p>
-                <div className="mt-4 h-24 rounded-lg bg-neutral-100 grid place-content-center text-xs text-neutral-500">
-                  UI mock #{i + 1}
+            {features.map((feature) => (
+              <div
+                key={feature.title}
+                className="card p-6 transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-md"
+              >
+                <h3 className="font-semibold">{feature.title}</h3>
+                <p className="mt-2 text-sm text-neutral-600">{feature.text}</p>
+                <div className="mt-4 relative h-24 rounded-xl overflow-hidden" aria-hidden>
+                  <div className="absolute inset-0 bg-accent-gradient opacity-40" />
+                  <div className="absolute inset-0 grid-overlay opacity-60" />
+                  <div className="relative z-10 grid place-items-center h-full text-neutral-700">
+                    <feature.Icon
+                      aria-hidden
+                      className={[
+                        'h-8 w-8',
+                        feature.iconClassName || '',
+                      ].filter(Boolean).join(' ')}
+                    />
+                  </div>
                 </div>
               </div>
             ))}

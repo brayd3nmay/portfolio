@@ -12,11 +12,12 @@ export const metadata: Metadata = {
   description: 'Review, Design, Build, Launch in under 4 weeks.',
 };
 
-const steps: { title: string; text: string; Icon: IconType }[] = [
+const steps: { title: string; text: string; Icon: IconType; iconClassName?: string }[] = [
   {
     title: 'Review',
     text: 'Quick audit of your current site and goals. We agree on scope and pages.',
     Icon: FaMagnifyingGlass,
+    iconClassName: 'scale-x-[-1]',
   },
   {
     title: 'Design',
@@ -58,7 +59,13 @@ export default function ProcessPage() {
                   <div className="absolute inset-0 bg-accent-gradient opacity-40" />
                   <div className="absolute inset-0 grid-overlay opacity-60" />
                   <div className="relative z-10 grid place-items-center h-full text-neutral-700">
-                    <s.Icon aria-hidden className="h-8 w-8" />
+                    <s.Icon
+                      aria-hidden
+                      className={[
+                        'h-8 w-8',
+                        s.iconClassName || '',
+                      ].filter(Boolean).join(' ')}
+                    />
                   </div>
                 </div>
               </div>
