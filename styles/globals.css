@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+/* Typography plugin base styles */
+@plugin "@tailwindcss/typography";
+
+/* Design tokens and helpers (no fixed color values for accents) */
+:root {
+  --accent-1: 0 0% 50%;
+  --accent-2: 0 0% 50%;
+  --accent-3: 0 0% 50%;
+}
+
+html { scroll-behavior: smooth; }
+
+.hairline { border-width: 1px; border-color: rgb(0 0 0 / 0.08); }
+.card { @apply rounded-2xl border shadow-sm bg-white/90 backdrop-blur; border-color: rgb(0 0 0 / 0.08); }
+.pill { @apply inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold; }
+.btn-primary { @apply inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold shadow; background: white; }
+.btn-secondary { @apply inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border bg-transparent; border-color: rgb(0 0 0 / 0.08); }
+
+.bg-accent-gradient {
+  background-image:
+    radial-gradient(80% 60% at 50% 40%, hsl(var(--accent-1) / 0.18), transparent 60%),
+    conic-gradient(from 180deg at 50% 50%, hsl(var(--accent-2) / 0.16), hsl(var(--accent-3) / 0.16));
+  filter: saturate(110%);
+}
+
+.grid-overlay {
+  background-image:
+    linear-gradient(to right, rgb(0 0 0 / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(0 0 0 / 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse at center, black, transparent 70%);
+  mask-image: radial-gradient(ellipse at center, black, transparent 70%);
+}
+
+.radial-lines {
+  background-image: repeating-radial-gradient(circle at 50% 40%, rgb(0 0 0 / 0.08) 0 1px, transparent 1px 8px);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+}
+
+/* Base element tweaks */
+body { @apply text-neutral-800 bg-neutral-50 antialiased; }
+a { @apply underline-offset-4; }
+strong { @apply font-semibold; }
+
+/* Focus styles */
+:focus-visible { outline: 2px solid rgb(0 0 0 / 0.6); outline-offset: 2px; }
+
+/* Header translucency */
+.header-surface { @apply bg-white/70 backdrop-blur; }
+

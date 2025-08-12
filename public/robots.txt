@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://braydenmay.com
+
+# Sitemaps
+Sitemap: https://braydenmay.com/sitemap.xml
