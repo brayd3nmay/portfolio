@@ -35,8 +35,9 @@ export default function AboutPage() {
           <div className="flex flex-col gap-6">
             <SectionHeading
               eyebrow="About"
-              title="Hi, I’m Brayden May"
+              title="Hi, I'm Brayden May"
               subtitle="Computer Science student at The Ohio State University, building clean, modern sites for Ohio small businesses."
+              subtitleClassName="mt-6"
             />
             <div className="prose prose-neutral max-w-none">
             <p>
