@@ -12,7 +12,7 @@ export function SectionHeading({ eyebrow, title, subtitle, titleClassName, subti
   return (
     <div className="max-w-3xl">
       {eyebrow ? (
-        <p className="text-xs tracking-widest uppercase text-neutral-500">{eyebrow}</p>
+        <p className="text-xs tracking-widest uppercase font-semibold text-accent-gradient">{eyebrow}</p>
       ) : null}
       <h2 className={`mt-1 text-2xl md:text-3xl font-bold tracking-tight ${titleClassName || ''}`}>{title}</h2>
       {subtitle ? (

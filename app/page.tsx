@@ -77,8 +77,9 @@ export default function HomePage() {
       <section className="pt-16 md:pt-20 pb-8 md:pb-12">
         <Container>
           <div className="relative">
-            {/* Background decoration */}
+            {/* Background decoration with subtle color */}
             <div className="absolute inset-0 bg-gradient-to-br from-neutral-50 to-neutral-100/50 rounded-3xl" />
+            <div className="absolute inset-0 bg-accent-gradient rounded-3xl opacity-25" />
             <div className="absolute inset-0 grid-overlay rounded-3xl opacity-30" />
             
             <div className="relative card p-8 md:p-12">
@@ -86,7 +87,7 @@ export default function HomePage() {
                 {/* Headshot */}
                 <div className="flex-shrink-0">
                   <div className="relative">
-                    <div className="absolute -inset-1 bg-gradient-to-r from-neutral-200 to-neutral-300 rounded-full blur opacity-75" />
+                    <div className="absolute -inset-1 bg-accent-gradient rounded-full blur opacity-60" />
                     <Image
                       src={headshot}
                       alt="Brayden May headshot"

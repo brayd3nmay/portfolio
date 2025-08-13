@@ -19,7 +19,7 @@ export default function AboutPage() {
           {/* Headshot */}
           <div className="flex justify-center md:justify-start">
             <div className="relative">
-              <div className="absolute -inset-1 bg-gradient-to-r from-neutral-200 to-neutral-300 rounded-full blur opacity-75" />
+              <div className="absolute -inset-1 bg-accent-gradient rounded-full blur opacity-60" />
               <Image
                 src={headshot}
                 alt="Brayden May headshot"
