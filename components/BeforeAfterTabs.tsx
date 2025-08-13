@@ -1,11 +1,11 @@
 "use client";
 
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import React from 'react';
 
 type Props = {
-  beforeSrc: string;
-  afterSrc: string;
+  beforeSrc: string | StaticImageData;
+  afterSrc: string | StaticImageData;
   alt: string;
   width: number;
   height: number;
@@ -79,6 +79,12 @@ export function BeforeAfterTabs({
             width={width}
             height={height}
             className="block w-full h-auto"
+            priority
+            loading="eager"
+            fetchPriority="high"
+            placeholder="blur"
+            quality={85}
+            sizes="(min-width: 768px) 50vw, 100vw"
           />
         </div>
         <div
@@ -87,7 +93,19 @@ export function BeforeAfterTabs({
           }`}
           aria-hidden={active !== 'after'}
         >
-          <Image src={afterSrc} alt={`After: ${alt}`} width={width} height={height} className="block w-full h-auto" />
+          <Image
+            src={afterSrc}
+            alt={`After: ${alt}`}
+            width={width}
+            height={height}
+            className="block w-full h-auto"
+            priority
+            loading="eager"
+            fetchPriority="high"
+            placeholder="blur"
+            quality={85}
+            sizes="(min-width: 768px) 50vw, 100vw"
+          />
         </div>
       </div>
     </div>

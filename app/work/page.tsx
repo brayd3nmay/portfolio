@@ -2,6 +2,9 @@ import { Container } from '@/components/Container';
 import { SectionHeading } from '@/components/SectionHeading';
 import { BeforeAfterTabs } from '@/components/BeforeAfterTabs';
 import type { Metadata } from 'next';
+import type { StaticImageData } from 'next/image';
+import SchaefferBefore from '../../public/images/projects/schaeffer-before.png';
+import SchaefferAfter from '../../public/images/projects/schaeffer-after.png';
 
 export const dynamic = 'force-static';
 
@@ -18,8 +21,8 @@ type Project = {
   newStack: string;
   improvements: string[];
   liveUrl: string;
-  before: string;
-  after: string;
+  before: string | StaticImageData;
+  after: string | StaticImageData;
 };
 
 const caseStudy: Project = {
@@ -33,8 +36,8 @@ const caseStudy: Project = {
     'Mobile-first layout and quicker TTFB',
   ],
   liveUrl: 'https://schaeffertank.com/',
-  before: '/images/projects/schaeffer-before.png',
-  after: '/images/projects/schaeffer-after.png',
+  before: SchaefferBefore,
+  after: SchaefferAfter,
 };
 
 // (Explorations removed to focus on one recent example)
