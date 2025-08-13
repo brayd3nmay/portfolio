@@ -21,15 +21,30 @@ export function ProjectCard({
   project,
   withSlider = false,
   display,
+  hideCta,
+  ctaLabel,
+  ctaHref,
+  tag,
 }: {
   project: Project;
   withSlider?: boolean; // backward-compat
   display?: DisplayVariant;
+  hideCta?: boolean;
+  ctaLabel?: string;
+  ctaHref?: string;
+  tag?: string;
 }) {
   const variant: DisplayVariant = display || (withSlider ? 'slider' : 'grid');
+  const resolvedCtaHref = ctaHref ?? project.liveUrl;
+  const resolvedCtaLabel = ctaLabel ?? 'View live';
   return (
     <article className="card p-6 flex flex-col gap-4">
       <header>
+        {tag ? (
+          <span className="inline-block mb-2 text-[11px] font-medium text-neutral-700 bg-neutral-100 border border-neutral-200 rounded px-2 py-0.5">
+            {tag}
+          </span>
+        ) : null}
         <h3 className="text-lg font-semibold">{project.name}</h3>
         <p className="text-sm text-neutral-600">{project.industry}</p>
       </header>
@@ -76,14 +91,16 @@ export function ProjectCard({
       </ul>
 
       <p className="text-sm text-neutral-700">
-        Result: more calls and form submissions.
+        Result: more calls and email inquiries.
       </p>
 
-      <div className="mt-auto">
-        <Link href={project.liveUrl} className="btn-secondary no-underline" target="_blank" rel="noopener noreferrer">
-          View live
-        </Link>
-      </div>
+      {!hideCta && resolvedCtaHref ? (
+        <div className="mt-auto">
+          <Link href={resolvedCtaHref} className="btn-secondary no-underline" target="_blank" rel="noopener noreferrer">
+            {resolvedCtaLabel}
+          </Link>
+        </div>
+      ) : null}
     </article>
   );
 }

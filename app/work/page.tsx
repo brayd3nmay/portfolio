@@ -1,13 +1,13 @@
 import { Container } from '@/components/Container';
 import { SectionHeading } from '@/components/SectionHeading';
-import { ProjectCard } from '@/components/ProjectCard';
+import { BeforeAfterTabs } from '@/components/BeforeAfterTabs';
 import type { Metadata } from 'next';
 
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
   title: 'Work',
-  description: 'Before and after examples across Ohio small businesses.',
+  description: 'A recent example of my work: an industrial services website redesign that increased calls and emails.',
 };
 
 type Project = {
@@ -22,77 +22,22 @@ type Project = {
   after: string;
 };
 
-const projects: Project[] = [
-  {
-    id: 'schaeffer',
-    name: "Schaeffer's Tank and Truck Service",
-    industry: 'Industrial Services',
-    oldStack: 'WordPress theme',
-    newStack: 'Next.js + Tailwind',
-    improvements: [
-      'Image optimization and clear contact on every page',
-      'Mobile-first layout and quicker TTFB',
-    ],
-    liveUrl: 'https://schaeffertank.com/',
-    before: '/images/projects/schaeffer-before.png',
-    after: '/images/projects/schaeffer-after.png',
-  },
-  {
-    id: 'hvac',
-    name: 'Summit Heating & Cooling',
-    industry: 'HVAC',
-    oldStack: 'Old CMS, heavy plugins',
-    newStack: 'Next.js static',
-    improvements: ['Calls-to-action above the fold', 'Faster loads on mobile'],
-    liveUrl: 'https://example.com',
-    before: '/images/projects/hvac-before.svg',
-    after: '/images/projects/hvac-after.svg',
-  },
-  {
-    id: 'dental',
-    name: 'Riverbend Dental',
-    industry: 'Clinic',
-    oldStack: 'Template site',
-    newStack: 'Next.js + Tailwind',
-    improvements: ['Clear services and insurance info', 'ADA-friendly contrast and focus'],
-    liveUrl: 'https://example.com',
-    before: '/images/projects/dental-before.svg',
-    after: '/images/projects/dental-after.svg',
-  },
-  {
-    id: 'auto',
-    name: 'Union Auto Body',
-    industry: 'Auto',
-    oldStack: 'Outdated HTML',
-    newStack: 'Next.js static',
-    improvements: ['Estimate CTA prominent', 'Before/after gallery'],
-    liveUrl: 'https://example.com',
-    before: '/images/projects/auto-before.svg',
-    after: '/images/projects/auto-after.svg',
-  },
-  {
-    id: 'accounting',
-    name: 'Maple Accounting',
-    industry: 'Professional Services',
-    oldStack: 'WordPress with bloated theme',
-    newStack: 'Next.js static',
-    improvements: ['Service pages for SEO', 'Simple contact and appointment links'],
-    liveUrl: 'https://example.com',
-    before: '/images/projects/accounting-before.svg',
-    after: '/images/projects/accounting-after.svg',
-  },
-  {
-    id: 'landscaping',
-    name: 'Oak Ridge Landscaping',
-    industry: 'Home Services',
-    oldStack: 'Wix',
-    newStack: 'Next.js static',
-    improvements: ['Project gallery and reviews', 'Clear phone and quote CTA'],
-    liveUrl: 'https://example.com',
-    before: '/images/projects/landscaping-before.svg',
-    after: '/images/projects/landscaping-after.svg',
-  },
-];
+const caseStudy: Project = {
+  id: 'schaeffer',
+  name: "Schaeffer's Tank and Truck Service",
+  industry: 'Industrial Services',
+  oldStack: 'WordPress theme',
+  newStack: 'Next.js + Tailwind',
+  improvements: [
+    'Image optimization and clear contact on every page',
+    'Mobile-first layout and quicker TTFB',
+  ],
+  liveUrl: 'https://schaeffertank.com/',
+  before: '/images/projects/schaeffer-before.png',
+  after: '/images/projects/schaeffer-after.png',
+};
+
+// (Explorations removed to focus on one recent example)
 
 export default function WorkPage() {
   return (
@@ -100,19 +45,73 @@ export default function WorkPage() {
       <Container>
         <SectionHeading
           eyebrow="Work"
-          title="Before and after redesigns"
-          subtitle="Six quick examples. Old → new → result."
+          title="A recent example of my work"
+          subtitle="An industrial services website redesign that improved calls and emails."
         />
 
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.map((p, idx) => (
-            <ProjectCard
-              key={p.id}
-              project={p}
-              // first two: new tabs toggle, rest: side-by-side grid
-              display={idx < 2 ? 'tabs' : 'grid'}
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+          <div className="order-2 md:order-1">
+            <div className="card p-6">
+              <span className="inline-block mb-2 text-[11px] font-medium text-neutral-700 bg-neutral-100 border border-neutral-200 rounded px-2 py-0.5">Case study</span>
+              <h3 className="text-xl font-semibold">{caseStudy.name}</h3>
+              <p className="text-sm text-neutral-600">{caseStudy.industry}</p>
+
+              <div className="mt-4">
+                <ul className="text-sm text-neutral-700 list-disc pl-5">
+                  <li>Old: {caseStudy.oldStack}</li>
+                  <li>New: {caseStudy.newStack}</li>
+                </ul>
+              </div>
+
+              <div className="mt-3">
+                <ul className="text-sm text-neutral-700 list-disc pl-5">
+                  {caseStudy.improvements.map((imp) => (
+                    <li key={imp}>{imp}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <p className="mt-3 text-sm text-neutral-700">Result: more calls and email inquiries.</p>
+
+              <div className="mt-4">
+                <a
+                  href={caseStudy.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="pill bg-accent-gradient text-white no-underline hover:opacity-95"
+                >
+                  View live
+                </a>
+              </div>
+            </div>
+
+            <div className="mt-8 prose prose-neutral max-w-none">
+              <h3>What I did</h3>
+              <ul>
+                <li>Redesigned the site with a mobile-first layout using Next.js and Tailwind for speed and maintainability.</li>
+                <li>Optimized images and improved performance to reduce time-to-first-byte and speed up page loads.</li>
+                <li>Made contact info and calls-to-action clearly visible on every page, including click-to-call and email links.</li>
+                <li>Clarified services and navigation so visitors quickly find what they need.</li>
+                <li>Improved accessibility and contrast to make forms and links easier to use.</li>
+              </ul>
+              <h3>Impact</h3>
+              <p>
+                With faster pages and clearer CTAs, the site now generates more phone calls and email inquiries for the shop. Making contact effortless—in the header and throughout the pages—reduced friction and helped convert more visitors into customers.
+              </p>
+            </div>
+          </div>
+
+          <div className="order-1 md:order-2 md:sticky md:top-24">
+            <BeforeAfterTabs
+              beforeSrc={caseStudy.before}
+              afterSrc={caseStudy.after}
+              alt={`${caseStudy.name}`}
+              width={1200}
+              height={800}
+              defaultTab="after"
             />
-          ))}
+            <p className="mt-2 text-[12px] text-pink-600 italic">*This is scrollable</p>
+          </div>
         </div>
       </Container>
     </section>

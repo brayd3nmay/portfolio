@@ -57,7 +57,9 @@ export function BeforeAfterTabs({
           role="tab"
           aria-selected={active === 'after'}
           className={`px-3 py-1 rounded border text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-black/20 ${
-            active === 'after' ? 'bg-white border-neutral-300 shadow-sm' : 'bg-neutral-100 border-transparent'
+            active === 'after'
+              ? 'bg-accent-gradient text-white border-transparent shadow-sm'
+              : 'bg-accent-gradient text-white/95 border-transparent opacity-80 hover:opacity-100'
           }`}
           onClick={selectAfter}
         >
