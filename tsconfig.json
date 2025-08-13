@@ -43,7 +43,6 @@
     "next-env.d.ts",
     "next-sitemap.config.js",
     "next.config.ts",
-    "sitemap.config.ts",
     "styles/**/*",
     "tailwind.config.ts",
     ".next/types/**/*.ts"
