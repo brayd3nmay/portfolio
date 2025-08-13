@@ -48,63 +48,37 @@ export default function WorkPage() {
       <Container>
         <SectionHeading
           eyebrow="Work"
-          title="A recent example of my work"
-          subtitle="An industrial services website redesign that improved calls and emails."
+          title="Recent work"
+          subtitle="An industrial services website that increased customer inquiries."
         />
 
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-          <div className="order-2 md:order-1">
+        <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Project Details - Left Side */}
+          <div className="order-2 lg:order-1">
             <div className="card p-6">
-              <span className="inline-block mb-2 text-[11px] font-medium text-neutral-700 bg-neutral-100 border border-neutral-200 rounded px-2 py-0.5">Case study</span>
-              <h3 className="text-xl font-semibold">{caseStudy.name}</h3>
-              <p className="text-sm text-neutral-600">{caseStudy.industry}</p>
-
-              <div className="mt-4">
-                <ul className="text-sm text-neutral-700 list-disc pl-5">
-                  <li>Old: {caseStudy.oldStack}</li>
-                  <li>New: {caseStudy.newStack}</li>
-                </ul>
+              <h3 className="text-xl font-semibold mb-2">{caseStudy.name}</h3>
+              <p className="text-neutral-600 mb-4">{caseStudy.industry}</p>
+              
+              <div className="space-y-3 text-sm text-neutral-700">
+                <p>Rebuilt from {caseStudy.oldStack} to {caseStudy.newStack}</p>
+                <p className="font-medium">Result: More phone calls and email inquiries</p>
               </div>
 
-              <div className="mt-3">
-                <ul className="text-sm text-neutral-700 list-disc pl-5">
-                  {caseStudy.improvements.map((imp) => (
-                    <li key={imp}>{imp}</li>
-                  ))}
-                </ul>
-              </div>
-
-              <p className="mt-3 text-sm text-neutral-700">Result: more calls and email inquiries.</p>
-
-              <div className="mt-4">
+              <div className="mt-6">
                 <a
                   href={caseStudy.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="pill bg-accent-gradient text-white no-underline hover:opacity-95"
                 >
-                  View live
+                  View live site
                 </a>
               </div>
             </div>
-
-            <div className="mt-8 prose prose-neutral max-w-none">
-              <h3>What I did</h3>
-              <ul>
-                <li>Redesigned the site with a mobile-first layout using Next.js and Tailwind for speed and maintainability.</li>
-                <li>Optimized images and improved performance to reduce time-to-first-byte and speed up page loads.</li>
-                <li>Made contact info and calls-to-action clearly visible on every page, including click-to-call and email links.</li>
-                <li>Clarified services and navigation so visitors quickly find what they need.</li>
-                <li>Improved accessibility and contrast to make forms and links easier to use.</li>
-              </ul>
-              <h3>Impact</h3>
-              <p>
-                With faster pages and clearer CTAs, the site now generates more phone calls and email inquiries for the shop. Making contact effortless—in the header and throughout the pages—reduced friction and helped convert more visitors into customers.
-              </p>
-            </div>
           </div>
 
-          <div className="order-1 md:order-2 md:sticky md:top-24">
+          {/* Before/After Visual - Right Side */}
+          <div className="order-1 lg:order-2">
             <BeforeAfterTabs
               beforeSrc={caseStudy.before}
               afterSrc={caseStudy.after}
@@ -113,7 +87,7 @@ export default function WorkPage() {
               height={800}
               defaultTab="after"
             />
-            <p className="mt-2 text-[12px] text-pink-600 italic">*This is scrollable</p>
+            <p className="mt-2 text-xs text-neutral-500 text-center">*This is scrollable</p>
           </div>
         </div>
       </Container>
