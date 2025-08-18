@@ -3,6 +3,7 @@ export default {
   siteUrl: 'https://braydenmay.com',
   generateRobotsTxt: true,
   outDir: 'public',
+  // Include the detailed breakdown page in the sitemap
   transform: async (config, path) => ({
     loc: path,
     changefreq: 'monthly',

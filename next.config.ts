@@ -30,6 +30,7 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   turbopack: {},
   images: { formats: ['image/avif', 'image/webp'] },
+  // No redirect; expose /pricing/details for the detailed breakdown page
   async headers() {
     return [
       {
