@@ -9,6 +9,7 @@ export const dynamic = 'force-static';
 export const metadata: Metadata = {
   title: 'About',
   description: 'Brayden May — reliable, outcomes-focused redesigns for Ohio small businesses.',
+  alternates: { canonical: '/about' },
 };
 
 export default function AboutPage() {

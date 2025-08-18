@@ -11,6 +11,7 @@ export const dynamic = 'force-static';
 export const metadata: Metadata = {
   title: 'Work',
   description: 'A recent example of my work: an industrial services website redesign that increased calls and emails.',
+  alternates: { canonical: '/work' },
 };
 
 type Project = {
@@ -19,7 +20,6 @@ type Project = {
   industry: string;
   oldStack: string;
   newStack: string;
-  improvements: string[];
   liveUrl: string;
   before: string | StaticImageData;
   after: string | StaticImageData;
@@ -31,10 +31,6 @@ const caseStudy: Project = {
   industry: 'Industrial Services',
   oldStack: 'WordPress theme',
   newStack: 'Next.js + Tailwind',
-  improvements: [
-    'Image optimization and clear contact on every page',
-    'Mobile-first layout and quicker TTFB',
-  ],
   liveUrl: 'https://schaeffertank.com/',
   before: SchaefferBefore,
   after: SchaefferAfter,

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import React from 'react';
 import { createPortal } from 'react-dom';
+import { usePathname } from 'next/navigation';
 
 const nav = [
   { href: '/work', label: 'Work' },
@@ -12,6 +13,7 @@ const nav = [
 ];
 
 export function Header() {
+  const pathname = usePathname();
   const [menuOpen, setMenuOpen] = React.useState(false);
   const headerRef = React.useRef<HTMLElement | null>(null);
   const [headerHeight, setHeaderHeight] = React.useState(0);
@@ -51,7 +53,11 @@ export function Header() {
           <ul className="hidden md:flex items-center gap-6">
             {nav.map((n) => (
               <li key={n.href}>
-                <Link href={n.href} className="no-underline text-sm hover:underline">
+                <Link
+                  href={n.href}
+                  className="no-underline text-sm hover:underline"
+                  aria-current={pathname === n.href ? 'page' : undefined}
+                >
                   {n.label}
                 </Link>
               </li>

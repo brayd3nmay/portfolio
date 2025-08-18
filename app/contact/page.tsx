@@ -7,6 +7,7 @@ export const dynamic = 'force-static';
 export const metadata: Metadata = {
   title: 'Contact',
   description: 'Email or book a quick call — no forms needed.',
+  alternates: { canonical: '/contact' },
 };
 
 export default function ContactPage() {

@@ -7,6 +7,7 @@ export const dynamic = 'force-static';
 export const metadata: Metadata = {
   title: 'Pricing details',
   description: 'Detailed breakdown of foundational setup, add-ons, inclusions, terms, and examples.',
+  alternates: { canonical: '/pricing/details' },
 };
 
 export default function PricingDetailsPage() {

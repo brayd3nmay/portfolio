@@ -10,6 +10,7 @@ export const dynamic = 'force-static';
 export const metadata: Metadata = {
   title: 'Process',
   description: 'Review, Design, Build, Launch in under 4 weeks.',
+  alternates: { canonical: '/process' },
 };
 
 const steps: { title: string; text: string; Icon: IconType; iconClassName?: string }[] = [

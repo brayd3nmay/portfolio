@@ -67,7 +67,7 @@ export function BeforeAfterTabs({
         </button>
       </div>
 
-      <div className="relative h-96 overflow-hidden rounded border">
+      <div className="relative h-96 overflow-hidden rounded border" aria-live="polite">
         <div
           className={`transition-opacity duration-300 absolute inset-0 overflow-y-auto ${
             active === 'before' ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'

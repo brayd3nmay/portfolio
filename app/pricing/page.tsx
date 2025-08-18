@@ -7,6 +7,7 @@ export const dynamic = 'force-static';
 export const metadata: Metadata = {
   title: 'Pricing',
   description: 'Get a modern, fast marketing site with clear scope and predictable pricing. Choose a package, then add only what you need.',
+  alternates: { canonical: '/pricing' },
 };
 
 export default function PricingPage() {
