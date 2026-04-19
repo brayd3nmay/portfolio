@@ -11,7 +11,7 @@ type Props = {
 }
 
 export const Prompt = forwardRef<HTMLInputElement, Props>(function Prompt(
-  { value, onChange, onSubmit, onKeyDown, label = 'brayden@portfolio:~$' }, ref
+  { value, onChange, onSubmit, onKeyDown, label = 'braydenmay@portfolio:~$' }, ref
 ) {
   return (
     <form onSubmit={(e) => { e.preventDefault(); onSubmit() }} className="flex items-baseline gap-2">

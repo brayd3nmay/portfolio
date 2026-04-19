@@ -7,7 +7,10 @@ export type SerializedBook = Book
 export type CommandContext = {
   articles: SerializedArticle[]
   books: SerializedBook[]
+  cwd: string
 }
+
+export const HOME = '/home/braydenmay'
 
 export type OutputLine =
   | { kind: 'text'; text: string; tone?: 'normal' | 'muted' | 'accent' }
@@ -15,10 +18,14 @@ export type OutputLine =
   | { kind: 'copy'; text: string; value: string; label: string }
   | { kind: 'heading'; text: string; level: 1 | 2 | 3 }
   | { kind: 'code'; text: string }
+  | { kind: 'manHeader'; left: string; center: string; right: string }
+  | { kind: 'manSection'; text: string }
 
 export type CommandResult = {
   lines: OutputLine[]
   clear?: boolean
-  theme?: 'toggle'
   fallback?: boolean
+  open?: string
+  switchToGui?: boolean
+  cwd?: string
 }

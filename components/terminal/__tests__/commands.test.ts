@@ -1,8 +1,9 @@
 import { describe, it, expect } from 'vitest'
 import { runCommand, listCommands } from '../commands'
-import type { CommandContext } from '../types'
+import { HOME, type CommandContext } from '../types'
 
 const ctx: CommandContext = {
+  cwd: HOME,
   articles: [
     { slug: 'post-a', title: 'Post A', date: '2026-02-01', excerpt: 'a', readingTime: 2, body: '## Hello\n\nParagraph text.\n\n```\ncode here\n```' },
     { slug: 'post-b', title: 'Post B', date: '2026-01-01', excerpt: 'b', readingTime: 1, body: 'Plain body.' },
@@ -75,7 +76,7 @@ describe('runCommand', () => {
 describe('listCommands', () => {
   it('returns all command names', () => {
     const names = listCommands()
-    for (const n of ['help', 'about', 'work', 'skills', 'writing', 'reading', 'contact', 'clear', 'theme', 'source']) {
+    for (const n of ['help', 'about', 'work', 'skills', 'writing', 'reading', 'contact', 'clear', 'source', 'email', 'github', 'linkedin']) {
       expect(names).toContain(n)
     }
   })

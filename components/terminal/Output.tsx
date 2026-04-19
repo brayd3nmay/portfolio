@@ -4,10 +4,10 @@ import { useEffect, useState } from 'react'
 import type { OutputLine } from './types'
 
 function Text({ line, reveal }: { line: Extract<OutputLine, { kind: 'text' }>; reveal: string }) {
-  const cls =
+  const tone =
     line.tone === 'muted' ? 'text-[var(--muted)]' :
     line.tone === 'accent' ? 'font-semibold' : ''
-  return <span className={cls}>{reveal || '\u00a0'}</span>
+  return <span className={`whitespace-pre-wrap ${tone}`}>{reveal || '\u00a0'}</span>
 }
 
 export function OutputLineView({ line, typewriter }: { line: OutputLine; typewriter: boolean }) {
@@ -70,6 +70,20 @@ export function OutputLineView({ line, typewriter }: { line: OutputLine; typewri
         {line.text}
       </pre>
     )
+  }
+
+  if (line.kind === 'manHeader') {
+    return (
+      <div className="flex justify-between font-semibold mb-4">
+        <span>{line.left}</span>
+        <span>{line.center}</span>
+        <span>{line.right}</span>
+      </div>
+    )
+  }
+
+  if (line.kind === 'manSection') {
+    return <div className="font-semibold mt-3">{line.text}</div>
   }
 
   return null

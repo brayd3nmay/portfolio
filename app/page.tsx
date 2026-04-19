@@ -2,7 +2,7 @@ import { Terminal } from '@/components/terminal/Terminal'
 import { SeoContent } from '@/components/SeoContent'
 import { getAllArticles } from '@/lib/writing'
 import { getBooks } from '@/lib/reading'
-import type { CommandContext, SerializedArticle } from '@/components/terminal/types'
+import type { SerializedArticle } from '@/components/terminal/types'
 
 export default async function HomePage({
   searchParams,
@@ -14,12 +14,11 @@ export default async function HomePage({
     slug: a.slug, title: a.title, date: a.date, excerpt: a.excerpt, readingTime: a.readingTime, body: a.body,
   }))
   const books = getBooks()
-  const ctx: CommandContext = { articles, books }
 
   return (
     <>
       <SeoContent />
-      <Terminal ctx={ctx} initialCommand={initialCommand} />
+      <Terminal ctx={{ articles, books }} initialCommand={initialCommand} />
     </>
   )
 }

@@ -6,7 +6,7 @@ import type { CommandContext } from '../types'
 
 vi.mock('next/navigation', () => ({ useRouter: () => ({ push: vi.fn() }) }))
 
-const ctx: CommandContext = {
+const ctx: Omit<CommandContext, 'cwd'> = {
   articles: [{ slug: 'foo', title: 'Foo', date: '2026-01-01', excerpt: '', readingTime: 1, body: 'body' }],
   books: [{ title: 'Bk', author: 'A', cover: '/x.jpg', rating: 5, finishedAt: '2025-01' }],
 }
