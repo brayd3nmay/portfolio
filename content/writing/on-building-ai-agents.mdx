@@ -1,0 +1,19 @@
+---
+title: "On building AI agents"
+date: "2026-04-10"
+excerpt: "LangGraph isn't magic — it's a state machine with an LLM in the loop."
+tags: ["ai", "systems"]
+draft: false
+---
+
+## What I learned shipping Mango
+
+Building with LangGraph taught me that agents are just state machines whose transitions happen to involve language models. The hard part isn't the model — it's designing the states.
+
+### The three states that mattered
+
+1. Gather — collect what the user wants
+2. Plan — decide the steps
+3. Execute — run them, with the ability to revise
+
+Everything else was plumbing.
