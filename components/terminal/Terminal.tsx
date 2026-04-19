@@ -1,11 +1,11 @@
 'use client'
 
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { runCommand, getCompletions, type CommandResult } from './commands'
+import { runCommand, getCompletions } from './commands'
 import { OutputLineView } from './Output'
 import { Prompt } from './Prompt'
 import { ModeSwitch } from '@/components/ModeSwitch'
-import type { CommandContext, OutputLine } from './types'
+import type { CommandContext, CommandResult, OutputLine } from './types'
 
 type Entry =
   | { kind: 'input'; text: string; id: number }
