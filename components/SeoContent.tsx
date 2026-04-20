@@ -14,7 +14,7 @@ export function SeoContent() {
         <li>Mango — Founder</li>
         <li>Ohio State — B.S. Computer Science and Engineering, Class of 2027</li>
       </ul>
-      <h2>Writing</h2>
+      <h2>Blog</h2>
       <ul>
         {articles.map((a) => (<li key={a.slug}>{a.date} — {a.title}: {a.excerpt}</li>))}
       </ul>

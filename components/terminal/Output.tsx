@@ -86,5 +86,12 @@ export function OutputLineView({ line, typewriter }: { line: OutputLine; typewri
     return <div className="font-semibold mt-3">{line.text}</div>
   }
 
+  if (line.kind === 'image') {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img src={line.src} alt={line.alt} className="my-1 max-h-64 w-auto rounded" />
+    )
+  }
+
   return null
 }

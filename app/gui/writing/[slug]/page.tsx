@@ -25,7 +25,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
   return (
     <article className="max-w-none">
-      <Link href="/gui/writing" className="text-sm text-[var(--muted)] hover:text-[var(--fg)]">← back to writing</Link>
+      <Link href="/gui/writing" className="text-sm text-[var(--muted)] hover:text-[var(--fg)]">← back to blog</Link>
       <h1 className="text-xl font-semibold mt-6">{article.title}</h1>
       <div className="text-sm text-[var(--muted)] mt-1 mb-8">{article.date} · {article.readingTime} min read</div>
       <div className="space-y-4 [&_h2]:text-lg [&_h2]:font-semibold [&_h2]:mt-8 [&_h3]:font-semibold [&_h3]:mt-6 [&_code]:bg-[var(--border)] [&_code]:px-1 [&_code]:rounded [&_ul]:list-disc [&_ul]:ml-6 [&_ol]:list-decimal [&_ol]:ml-6">

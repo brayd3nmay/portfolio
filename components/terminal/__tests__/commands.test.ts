@@ -9,8 +9,8 @@ const ctx: CommandContext = {
     { slug: 'post-b', title: 'Post B', date: '2026-01-01', excerpt: 'b', readingTime: 1, body: 'Plain body.' },
   ],
   books: [
-    { title: 'Book One', author: 'Alice', cover: '/x.jpg', rating: 5, finishedAt: '2025-09' },
-    { title: 'Book Two', author: 'Bob', cover: '/y.jpg', rating: null, finishedAt: 'reading' },
+    { title: 'Book One', author: 'Alice', cover: '/x.jpg', rating: 5 },
+    { title: 'Book Two', author: 'Bob', cover: '/y.jpg', rating: null },
   ],
 }
 
@@ -20,7 +20,7 @@ describe('runCommand', () => {
     const txt = out.lines.map((l) => (l as any).text).join('\n')
     expect(txt).toContain('about')
     expect(txt).toContain('work')
-    expect(txt).toContain('writing')
+    expect(txt).toContain('blog')
   })
 
   it('about returns bio', () => {
@@ -52,14 +52,14 @@ describe('runCommand', () => {
     expect(txt).toContain('Book Two')
   })
 
-  it('writing lists articles', () => {
-    const out = runCommand('writing', ctx)
+  it('blog lists articles', () => {
+    const out = runCommand('blog', ctx)
     const txt = out.lines.map((l: any) => l.text).join('\n')
     expect(txt).toContain('Post A')
   })
 
-  it('writing <slug> parses MDX headings and code', () => {
-    const out = runCommand('writing post-a', ctx)
+  it('blog <slug> parses MDX headings and code', () => {
+    const out = runCommand('blog post-a', ctx)
     const kinds = out.lines.map((l) => l.kind)
     expect(kinds).toContain('heading')
     expect(kinds).toContain('code')
@@ -76,7 +76,7 @@ describe('runCommand', () => {
 describe('listCommands', () => {
   it('returns all command names', () => {
     const names = listCommands()
-    for (const n of ['help', 'about', 'work', 'skills', 'writing', 'reading', 'contact', 'clear', 'source', 'email', 'github', 'linkedin']) {
+    for (const n of ['help', 'about', 'work', 'skills', 'blog', 'reading', 'contact', 'clear', 'source', 'email', 'github', 'linkedin']) {
       expect(names).toContain(n)
     }
   })

@@ -29,7 +29,7 @@ type Entry =
   | { kind: 'input'; text: string; id: number; cwd: string }
   | { kind: 'output'; line: OutputLine; id: number; typewriter: boolean }
 
-const HINT = 'type help to get started, or try: about, work, writing'
+const HINT = 'type help to get started, or try: about, work, blog'
 
 function prefersReducedMotion() {
   if (typeof window === 'undefined') return false

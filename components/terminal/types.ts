@@ -20,6 +20,7 @@ export type OutputLine =
   | { kind: 'code'; text: string }
   | { kind: 'manHeader'; left: string; center: string; right: string }
   | { kind: 'manSection'; text: string }
+  | { kind: 'image'; src: string; alt: string }
 
 export type CommandResult = {
   lines: OutputLine[]

@@ -94,7 +94,7 @@ export default function GuiHome() {
       <section>
         <h2 className="text-sm uppercase tracking-wide text-[var(--muted)] mb-3">More</h2>
         <ul className="text-sm space-y-1">
-          <li><Link href="/gui/writing" className="underline">Writing</Link></li>
+          <li><Link href="/gui/writing" className="underline">Blog</Link></li>
           <li><Link href="/gui/reading" className="underline">Reading</Link></li>
         </ul>
       </section>

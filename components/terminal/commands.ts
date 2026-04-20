@@ -17,12 +17,12 @@ function bookFile(i: number, title: string): string {
 
 function listDir(path: string, ctx: CommandContext): string[] | null {
   if (path === HOME) {
-    return ['about', 'work', 'skills', 'contact/', 'writing/', 'reading/']
+    return ['about', 'work', 'skills', 'contact/', 'blog/', 'reading/']
   }
   if (path === `${HOME}/contact`) {
     return ['email', 'github', 'linkedin']
   }
-  if (path === `${HOME}/writing`) {
+  if (path === `${HOME}/blog`) {
     return ctx.articles.map((a) => `${a.slug}.mdx`)
   }
   if (path === `${HOME}/reading`) {
@@ -47,10 +47,10 @@ function resolvePath(cwd: string, target: string): string {
 // Run a name inside the current directory as its underlying action.
 // Returns null if no file match.
 function runFile(name: string, ctx: CommandContext): CommandResult | null {
-  if (ctx.cwd === `${HOME}/writing`) {
+  if (ctx.cwd === `${HOME}/blog`) {
     const slug = name.replace(/\.mdx?$/, '')
     const article = ctx.articles.find((a) => a.slug === slug)
-    if (article) return HANDLERS.writing.run([slug], ctx)
+    if (article) return HANDLERS.blog.run([slug], ctx)
   }
   if (ctx.cwd === `${HOME}/reading`) {
     const m = name.match(/^(\d+)(?:-.*)?$/)
@@ -65,8 +65,8 @@ function runFile(name: string, ctx: CommandContext): CommandResult | null {
 }
 
 function stars(rating: number | null): string {
-  if (rating === null) return '—   '
-  return '★'.repeat(rating) + '☆'.repeat(5 - rating)
+  if (rating === null) return 'reading'
+  return '★'.repeat(rating)
 }
 
 function renderBody(body: string): OutputLine[] {
@@ -157,8 +157,8 @@ const HANDLERS: Record<string, Entry> = {
       ],
     }),
   },
-  writing: {
-    desc: 'list articles, or `writing <slug>` to open one',
+  blog: {
+    desc: 'list articles, or `blog <slug>` to open one',
     run: (args, ctx) => {
       if (args.length === 0) {
         return { lines: ctx.articles.map((a) => text(`  ${a.date}  ${a.title}  (${a.slug})`)) }
@@ -192,11 +192,10 @@ const HANDLERS: Record<string, Entry> = {
       const b = ctx.books[n - 1]
       return {
         lines: [
+          { kind: 'image', src: b.cover, alt: `${b.title} cover` },
           { kind: 'heading', text: b.title, level: 3 },
-          text(`by ${b.author}`, 'muted'),
-          text(`rating: ${b.rating === null ? 'currently reading' : stars(b.rating)}`),
-          text(`finished: ${b.finishedAt}`, 'muted'),
-          ...(b.note ? [text(''), text(b.note)] : []),
+          text(b.author, 'muted'),
+          ...(b.note ? [text(b.note)] : []),
         ],
       }
     },
@@ -343,7 +342,7 @@ const HANDLERS: Record<string, Entry> = {
   vim: {
     desc: 'open vim',
     hidden: true,
-    run: () => ({ lines: [text("vim doesn't run here. try `writing` to read instead.")] }),
+    run: () => ({ lines: [text("vim doesn't run here. try `blog` to read instead.")] }),
   },
   emacs: {
     desc: 'open emacs',
@@ -373,7 +372,7 @@ const HANDLERS: Record<string, Entry> = {
   make: {
     desc: 'make',
     hidden: true,
-    run: () => ({ lines: [text('make what? (try `writing`, `work`, or `neofetch`.)')] }),
+    run: () => ({ lines: [text('make what? (try `blog`, `work`, or `neofetch`.)')] }),
   },
 }
 
@@ -386,11 +385,11 @@ export function runCommand(input: string, ctx: CommandContext): CommandResult {
   const cmd = HANDLERS[name]
   if (cmd) return cmd.run(args, ctx)
 
-  // 2) file in current directory (e.g. `hello-world.mdx` inside /writing)
+  // 2) file in current directory (e.g. `hello-world.mdx` inside /blog)
   const file = runFile(name, ctx)
   if (file) return file
 
-  // 3) relative path (e.g. `writing/hello-world.mdx` from home)
+  // 3) relative path (e.g. `blog/hello-world.mdx` from home)
   if (name.includes('/')) {
     const target = resolvePath(ctx.cwd, name)
     const parent = target.slice(0, target.lastIndexOf('/')) || HOME
@@ -450,11 +449,11 @@ export function getCompletions(prefix: string, ctx: CommandContext): string[] {
     return matches.map((m) => `${cmd} ${pathPrefix}${m}`)
   }
 
-  if (cmd === 'writing') {
+  if (cmd === 'blog') {
     return ctx.articles
       .map((a) => a.slug)
       .filter((s) => s.startsWith(arg))
-      .map((s) => `writing ${s}`)
+      .map((s) => `blog ${s}`)
   }
   if (cmd === 'reading') {
     return ctx.books
