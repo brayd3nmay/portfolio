@@ -9,6 +9,18 @@ export default function GuiHome() {
   return (
     <div className="space-y-10">
       <section>
+        {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+        <video
+          src="/ascii-animation.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full rounded-xl"
+        />
+      </section>
+
+      <section>
         <h1 className="text-xl font-semibold">Hi, I'm Brayden May.</h1>
         <p className="mt-2 text-[var(--muted)]">
           I'm building at the intersection of technology, design, and business.
